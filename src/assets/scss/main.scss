@@ -51,9 +51,21 @@ ul {
     }
 }
 
+.all-txt {
+    font-size: calc(12px + 6 * (100vw / 1920));
+
+    &::first-letter {
+        text-transform: uppercase;
+    }
+}
+
 @media (min-width: 1920px) {
     .all-title {
         font-size: 44px !important;
+    }
+
+    .all-txt {
+        font-size: 18px !important;
     }
 }
 
@@ -76,4 +88,15 @@ ul {
     &:hover {
         background: var(--main-black);
     }
+}
+
+
+::-webkit-scrollbar {
+    width: 10px;
+    background: var(--main-white);
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background: var(--main-pink);
 }
