@@ -7,7 +7,7 @@
                 <h1 class="header__descr-title all-title">{{ store.title }}</h1>
                 <p class="header__descr-txt">{{ store.txt }}</p>
 
-                <button class="header__descr-btn pink-btn">{{ store.btnTxt }}</button>
+                <button class="header__descr-btn all-btn">{{ store.btnTxt }}</button>
             </div>
 
             <img :src="store.img" alt="" class="header-img">

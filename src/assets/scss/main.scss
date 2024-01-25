@@ -69,7 +69,7 @@ ul {
     }
 }
 
-.pink-btn {
+.all-btn {
     background: var(--main-pink);
     padding: 10px 20px;
     color: var(--main-white);
@@ -87,6 +87,14 @@ ul {
 
     &:hover {
         background: var(--main-black);
+    }
+
+    &.dark {
+        background: var(--main-black);
+
+        &:hover {
+            background: #ABABAB;
+        }
     }
 }
 
@@ -116,4 +124,14 @@ img {
     &::first-letter {
         text-transform: uppercase;
     }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
 }

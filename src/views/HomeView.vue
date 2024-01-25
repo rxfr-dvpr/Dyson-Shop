@@ -7,6 +7,8 @@
     <Opinion/>
 
     <Advantages/>
+
+    <Contact/>
   </main>
 </template>
 
@@ -15,6 +17,7 @@ import Header from '@/components/Header.vue'
 import Opinion from '@/components/Opinion.vue'
 import Advantages from '@/components/Advantages.vue'
 import Category from '@/components/Category.vue'
+import Contact from '@/components/Contact.vue'
 
 export default {
   name: 'Home Page',
@@ -23,6 +26,7 @@ export default {
     Category,
     Opinion,
     Advantages,
+    Contact
   }
 }
 
