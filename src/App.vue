@@ -1,7 +1,7 @@
 <template>
-  <Nav/>
+  <Nav v-cloak/>
   
-  <router-view/>
+  <router-view v-cloak/>
 </template>
 
 <script>
@@ -17,4 +17,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+[v-cloak] {
+  display: none;
+}
 </style>

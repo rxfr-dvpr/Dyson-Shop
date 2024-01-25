@@ -16,7 +16,7 @@
 }
 
 html {
-    background: rgb(39, 39, 39);
+    background: var(--main-white);
 }
 
 a {
@@ -43,7 +43,7 @@ ul {
 }
 
 .all-title {
-    font-size: calc(24px + 20 * (100vw / 1920));
+    font-size: calc(22px + 20 * (100vw / 1920));
     font-weight: 700;
 
     &::first-letter {
@@ -61,7 +61,7 @@ ul {
 
 @media (min-width: 1920px) {
     .all-title {
-        font-size: 44px !important;
+        font-size: 42px !important;
     }
 
     .all-txt {
@@ -99,4 +99,10 @@ ul {
 ::-webkit-scrollbar-thumb {
     border-radius: 3px;
     background: var(--main-pink);
+}
+
+.advantages__section {
+    .item-icon i {
+        color: var(--main-pink);
+    }
 }
