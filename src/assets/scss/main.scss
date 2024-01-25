@@ -106,3 +106,14 @@ ul {
         color: var(--main-pink);
     }
 }
+
+img {
+    pointer-events: none;
+    user-select: none;
+}
+
+.frstUpper {
+    &::first-letter {
+        text-transform: uppercase;
+    }
+}

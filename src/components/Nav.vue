@@ -9,7 +9,7 @@
 
                 <ul class="nav__list">
                     <li class="nav__list-item" v-for="(link, idx) in store.list" :key="idx">
-                        <router-link :to="`/`" class="nav__list-link">
+                        <router-link :to="`/${link.url}`" class="nav__list-link">
                             {{ link.name }}
                         </router-link>
                     </li>
@@ -42,6 +42,9 @@ export default {
     width: 100%;
     padding: 7px 0;
     background: var(--main-black);
+    position: sticky;
+    top: 0;
+    left: 0;
 
     .row {
         justify-content: space-between;

@@ -2,6 +2,8 @@
   <Header/>
 
   <main class="main">
+    <Category/>
+
     <Opinion/>
 
     <Advantages/>
@@ -12,13 +14,15 @@
 import Header from '@/components/Header.vue'
 import Opinion from '@/components/Opinion.vue'
 import Advantages from '@/components/Advantages.vue'
+import Category from '@/components/Category.vue'
 
 export default {
   name: 'Home Page',
   components: {
     Header,
+    Category,
     Opinion,
-    Advantages
+    Advantages,
   }
 }
 
