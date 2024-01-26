@@ -15,8 +15,7 @@
                     </li>
                 </ul>
 
-                <router-link to="/cart" class="shop-cart"><i class="fa-light fa-bag-shopping"></i></router-link>
-
+                <router-link to="/cart" class="shop-cart"><i class="fal fa-shopping-bag"></i></router-link>
             </div>
         </div>
     </nav>
