@@ -1,5 +1,5 @@
 <template>
-  <section class="contact__section">
+  <section class="contact__section all-padding">
     <div class="container">
         <div class="row">
             <form action="POST" @submit.prevent class="contact-form all-form">
@@ -58,7 +58,6 @@ export default {
 
 .contact__section {
     width: 100%;
-    padding: 150px 0 110px;
     background: #F8F8F8;
 
     .row {

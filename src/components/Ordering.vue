@@ -1,5 +1,5 @@
 <template>
-  <section class="ordering__section">
+  <section class="ordering__section all-padding">
     <div class="container">
         <div class="row">
             <h2 class="ordering-title all-title">{{ store.orderTitle }}</h2>
@@ -36,7 +36,6 @@ export default {
 
 .ordering__section {
     width: 100%;
-    padding: 150px 0;
 
     .row {
         flex-direction: column;

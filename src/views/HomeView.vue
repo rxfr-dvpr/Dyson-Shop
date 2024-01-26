@@ -8,6 +8,8 @@
 
     <Advantages/>
 
+    <Equipment/>
+
     <Ordering/>
 
     <Contact/>
@@ -21,6 +23,7 @@ import Advantages from '@/components/Advantages.vue'
 import Category from '@/components/Category.vue'
 import Contact from '@/components/Contact.vue'
 import Ordering from '@/components/Ordering.vue'
+import Equipment from '@/components/Equipment.vue'
 
 export default {
   name: 'Home Page',
@@ -29,6 +32,7 @@ export default {
     Category,
     Opinion,
     Advantages,
+    Equipment,
     Ordering,
     Contact,
   }

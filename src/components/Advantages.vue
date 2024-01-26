@@ -1,5 +1,5 @@
 <template>
-  <section class="advantages__section">
+  <section class="advantages__section all-padding">
     <div class="container">
         <div class="row">
             <h2 class="advantages-title all-title">{{ store.title }}</h2>
@@ -34,7 +34,6 @@ export default {
 
 .advantages__section {
     width: 100%;
-    padding: 150px 0;
 
     .row {
         flex-direction: column;

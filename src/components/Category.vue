@@ -1,5 +1,5 @@
 <template>
-  <section class="category__section">
+  <section class="category__section all-padding">
     <div class="container">
         <div class="row">
             <div class="category-list">
@@ -38,7 +38,6 @@ export default {
 
 .category__section {
     width: 100%;
-    padding: 150px 0;
 
     .category-list {
         max-width: 100%;
