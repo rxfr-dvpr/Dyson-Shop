@@ -53,7 +53,8 @@ ul {
 
 .all-txt {
     font-size: calc(12px + 6 * (100vw / 1920));
-
+    font-weight: 300;
+    
     &::first-letter {
         text-transform: uppercase;
     }

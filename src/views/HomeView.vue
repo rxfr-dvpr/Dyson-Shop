@@ -10,6 +10,8 @@
 
     <Equipment/>
 
+    <Faq/>
+
     <Ordering/>
 
     <Contact/>
@@ -24,6 +26,7 @@ import Category from '@/components/Category.vue'
 import Contact from '@/components/Contact.vue'
 import Ordering from '@/components/Ordering.vue'
 import Equipment from '@/components/Equipment.vue'
+import Faq from '@/components/Faq.vue'
 
 export default {
   name: 'Home Page',
@@ -33,8 +36,9 @@ export default {
     Opinion,
     Advantages,
     Equipment,
+    Faq,
     Ordering,
-    Contact,
+    Contact
   }
 }
 

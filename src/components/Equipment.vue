@@ -5,7 +5,7 @@
             <h2 class="equipment-title all-title">{{ store.title }}</h2>
 
             <div class="main-swiper">
-                <swiper class="equipment-swiper" 
+                <swiper class="equipment-swiper" :autoplay="{ delay: 1500, disableOnInteraction: false}"
                 :navigation="{ nextEl: '.equipment-control.right', prevEl: '.equipment-control.left'}" 
                 :modules="modules" :slidesPerView="4" :spaceBetween="20">
                     <swiper-slide class="equipment-swiper-slide" v-for="(slide, idx) in store.slider" :key="idx">
@@ -30,7 +30,7 @@ import { equipStore } from "@/stores/equipStore.js";
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/scss';
 import 'swiper/scss/navigation';
-import { Navigation } from 'swiper/modules';
+import { Navigation, Autoplay } from 'swiper/modules';
 
 export default {
     name: 'Equipment Section',
@@ -41,7 +41,7 @@ export default {
     data() {
         return {
             store: equipStore(),
-            modules: [Navigation]
+            modules: [Navigation, Autoplay]
         }
     }
 }
@@ -66,6 +66,10 @@ export default {
 
     .equipment-swiper {
         width: 100%;
+
+        .swiper-wrapper {
+            transition: 1s !important;
+        }
 
         &-slide {
             width: 100%;
@@ -117,6 +121,30 @@ export default {
             font-size: 20px;
             padding: 5px 8px;
             background: var(--main-white);
+            transition: .3s;
+
+            i {
+                transition: .3s;
+            }
+
+            &.swiper-button-disabled {
+                i { opacity: .4;}
+
+                &:hover {
+                    border-color: var(--main-black);
+                    i {
+                        color: var(--main-black);
+                    }
+                }
+            }
+
+            &:hover {
+                border-color: var(--main-pink);
+
+                i {
+                    color: var(--main-pink);
+                }
+            }
         }
     }
 }
