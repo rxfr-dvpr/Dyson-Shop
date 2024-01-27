@@ -9,12 +9,52 @@
                     <span class="rate-nums"><span class="rating-num">{{ rateNum }}</span> / 5</span>
                     
                     <span class="rate-stars">
-                        <i class="fas fa-star"  v-for="star in 5" :key="star"></i>
+                        <i class="fas fa-star" v-for="(star) in 5"
+                         :key="star" @click="this.rateNum = star"></i>
                     </span>
                 </span>
 
-                <button class="review__form-btn">{{ store.form.createBtn }}</button>
+                <button class="review__form-btn all-btn" @click="modalVisible = true">
+                    {{ store.form.createBtn }}
+                </button>
             </div>
+        
+            <Transition name="review-modal">
+                <div class="review__modal" v-show="modalVisible">
+                    <Transition name="review-modal-inner">
+                        <form class="review__modal-form" v-show="modalVisible" 
+                        action="POST" @submit.prevent="sendReview">
+                            <span class="close-btn" @click="modalVisible = false">
+                                <i class="fal fa-times"></i>
+                            </span>
+
+                            <p class="review__modal-title frstUpper">{{ store.form.title }}</p>
+
+                            <span class="review__form-rate">
+                                <span class="rate-nums"><span class="rating-num">{{ rateNum }}</span> / 5</span>
+                                
+                                <span class="rate-stars">
+                                    <i class="fas fa-star" v-for="(star) in 5"
+                                     :key="star" @click="this.rateNum = star"></i>
+                                </span>
+                            </span>
+
+                            <input type="text" class="modal-inp name all-txt" 
+                            placeholder="Ваше имя" required v-model="nameInp" maxlength="35">
+
+                            <input type="text" class="modal-inp title all-txt" 
+                            placeholder="Заголовок" required v-model="titleInp">
+
+                            <textarea placeholder="Комментарий" v-model="msgInp" 
+                            class="modal-inp msg all-txt" rows="10" required></textarea>
+
+                            <button class="review__modal-btn all-btn dark">
+                                {{ store.form.modalBtn }}
+                            </button>
+                        </form>
+                    </Transition>
+                </div>
+            </Transition>
 
             <div class="reviews__list">
                 <div class="reviews__list-item" v-for="(item, idx) in store.reviews" :key="idx">
@@ -48,7 +88,31 @@ export default {
     data() {
         return {
             store: reviewsStore(),
-            rateNum: 5
+            rateNum: 5,
+            modalVisible: false,
+            nameInp: '',
+            titleInp: '',
+            msgInp: ''
+        }
+    },
+    methods: {
+        getDate() {
+            return `${new Date().getDate()}/0${new Date().getMonth() + 1}/${new Date().getFullYear()}`
+        },
+        sendReview() {
+            this.store.reviews.unshift(
+                {
+                    name: this.nameInp,
+                    stars: this.rateNum,
+                    title: this.titleInp,
+                    msg: this.msgInp,
+                    date: this.getDate()
+                }
+            )
+
+            this.nameInp = this.titleInp = this.msgInp = ''
+            this.modalVisible = false
+            this.rateNum = 5
         }
     }
 }
@@ -77,17 +141,20 @@ export default {
             border-top: 1px solid rgba($color: #ABABAB, $alpha: .5);
             padding: 40px 0;
             row-gap: 10px;
+            column-gap: 30px;
 
             .review-main {
-                max-width: 160px;
+                max-width: 130px;
                 width: 100%;
                 display: flex;
                 flex-direction: column;
                 row-gap: 10px;
 
                 &-author {
+                    width: 100%;
                     font-size: 20px;
                     font-weight: 500;
+                    word-wrap: break-word;
                 }
 
                 .review-main-stars {
@@ -108,8 +175,15 @@ export default {
                 row-gap: 9px;
 
                 &-title {
+                    width: 100%;
+                    word-wrap: break-word;
                     font-size: 20px;
                     font-weight: 600;
+                }
+
+                &-msg {
+                    width: 100%;
+                    word-wrap: break-word;
                 }
             }
 
@@ -146,10 +220,116 @@ export default {
 
                 i {
                     color: var(--main-pink);
+                    cursor: pointer;
+                }
+            } 
+        }
+
+        &-btn {
+            color: var(--main-black);
+            background: transparent;
+            border: solid 1px var(--main-black);
+        }
+    }
+
+    .review__modal {
+        width: 100%;
+        height: 100dvh;
+        background: rgba($color: #000, $alpha: .6);
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 3000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow-y: auto;
+        padding: 30px 0;
+
+        &-form {
+            max-width: 745px;
+            width: 100%;
+            overflow-y: auto;
+            padding: 15px 15px 70px 80px;
+            background: var(--main-white);
+            display: flex;
+            flex-direction: column;
+            border-radius: 3px;
+
+            .close-btn {
+                margin-left: auto;
+                font-size: 20px;
+                padding: 0 5px;
+                background: transparent;
+                font-size: 25px;
+                opacity: .5;
+                cursor: pointer;
+                transition: .3s;
+
+                i {
+                    color: var(--main-black);
+                    transition: .3s;
+                }
+
+                &:hover {
+                    opacity: 1;
+                    i {
+                        color: var(--main-pink);
+                    }
+                }
+            }
+
+            .modal-inp {
+                max-width: 585px;
+                width: 100%;
+                border-radius: 3px;
+                border: 1px solid #D9D9D9;
+                padding: 10px;
+                margin-bottom: 20px;
+                outline-color: var(--main-pink);
+                font-weight: 400;
+
+                &::placeholder {
+                    color: #ABABAB;
+                }
+
+                &.name {
+                    margin-top: 20px;
+                }
+
+                &.msg {
+                    resize: vertical;
                 }
             }
         }
+
+        &-title {
+            font-size: 30px;
+            font-weight: 600;
+            margin-bottom: 40px;
+        }
     }
+}
+
+.review-modal-inner-enter-active,
+.review-modal-inner-leave-active {
+  transition: .5s ease;
+}
+
+.review-modal-inner-enter-from,
+.review-modal-inner-leave-to {
+  opacity: 0;
+  transform: scale(1.1);
+}
+
+.review-modal-enter-active,
+.review-modal-leave-active {
+    transition: .4s ease;
+}
+
+.review-modal-enter-from,
+.review-modal-leave-to {
+    opacity: 0;
 }
 
 </style>

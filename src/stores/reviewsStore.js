@@ -27,7 +27,9 @@ export const reviewsStore = defineStore('Reviews Store', {
             }
         ],
         form: {
-            createBtn: 'Написать отзыв'
+            createBtn: 'Написать отзыв',
+            title: 'Написать отзыв',
+            modalBtn: 'Отправить отзыв'
         }
     })
 })
