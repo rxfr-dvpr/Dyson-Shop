@@ -15,7 +15,9 @@
                     </li>
                 </ul>
 
-                <router-link to="/cart" class="shop-cart"><i class="fal fa-shopping-bag"></i></router-link>
+                <router-link to="/cart" class="shop-cart">
+                    <lord-icon src="https://cdn.lordicon.com/evyuuwna.json" trigger="loop" delay="1300" colors="primary:#ffffff" style="width:35px;height:35px" class="shop-cart-icon"></lord-icon>
+                </router-link>
             </div>
         </div>
     </nav>
@@ -83,13 +85,13 @@ export default {
     .shop-cart {
         font-size: 22px;
 
-        i {
-            color: var(--main-white);
+        &-icon {
+            fill: var(--main-white);
             transition: .3s;
         }
 
         &:hover {
-            i {
+            &-icon {
                 color: var(--main-pink);
             }
         }
