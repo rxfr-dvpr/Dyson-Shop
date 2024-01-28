@@ -22,4 +22,9 @@ const router = createRouter({
   ]
 })
 
+router.beforeEach(function (to, from, next) { 
+  next();
+  window.scrollTo(0, 0);
+});
+
 export default router

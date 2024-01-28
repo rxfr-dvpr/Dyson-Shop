@@ -1,11 +1,33 @@
 <template>
-  <h1 class="all-title">Category Page</h1>
+  <main class="main">
+    <Opinion/>
+
+    <Advantages/>
+
+    <Faq/>
+
+    <Reviews/>  
+    
+    <Contact/>
+  </main>
 </template>
 
 <script>
+import Contact from '@/components/Contact.vue'
+import Reviews from '@/components/Reviews.vue'
+import Faq from '@/components/Faq.vue'
+import Opinion from '@/components/Opinion.vue'
+import Advantages from '@/components/Advantages.vue'
 
 export default {
   name: "Category Page",
+  components: {
+    Opinion,
+    Advantages,
+    Reviews,
+    Faq,
+    Contact
+  }
 }
 
 </script>
