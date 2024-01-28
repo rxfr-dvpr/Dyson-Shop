@@ -114,7 +114,7 @@ export default {
     }
 
     .card-descr {
-        max-width: 360px;
+        max-width: 372px;
         width: 100%;
         margin: 0 auto;
         height: 100%;
