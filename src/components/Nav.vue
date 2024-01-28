@@ -39,6 +39,18 @@ export default {
 
 <style lang="scss" scoped>
 
+@keyframes colorGlitch {
+    from {
+        color: var(--main-pink);
+    }
+    50% {
+        color: #4D57C8;
+    }
+    to {
+        color: var(--main-pink);
+    }
+}
+
 .nav {
     width: 100%;
     padding: 7px 0;
@@ -51,6 +63,7 @@ export default {
     .row {
         justify-content: space-between;
         align-items: center;
+        gap: 45px;
     }
 
     &-logo {
@@ -64,10 +77,11 @@ export default {
     }
 
     &__list {
-        max-width: 920px;
+        max-width: max-content;
         width: 100%;
         display: flex;
-        justify-content: space-between;
+        align-items: center;
+        margin-left: auto;
         gap: 30px;
 
         &-link {
@@ -76,8 +90,13 @@ export default {
             font-weight: 500;
             transition: .3s;
 
-            &:hover {
+            &:hover, &.router-link-exact-active {
                 color: var(--main-pink);
+            }
+
+            &.router-link-exact-active {
+                animation: name duration timing-function delay iteration-count direction fill-mode;
+                animation: colorGlitch 2s infinite linear;
             }
         }
     }
