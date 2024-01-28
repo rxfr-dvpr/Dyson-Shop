@@ -27,12 +27,14 @@
             <span class="increment ctrl-btn" @click="amount < 99 ? amount++ : '' "><i class="fal fa-plus"></i></span>
         </span>
 
-        <button class="product-card-btn all-btn dark" :disabled="!product.status.available">В корзину</button>
+        <button class="product-card-btn all-btn dark" @click="selectProduct" 
+        :disabled="!product.status.available">В корзину</button>
     </div>
   </div>
 </template>
 
 <script>
+import { cartStore } from "@/stores/cartStore.js";
 
 export default {
     name: 'Product Card',
@@ -56,7 +58,8 @@ export default {
     },
     data() {
         return {
-            amount: 1
+            amount: 1,
+            cartStore: cartStore()
         }
     },
     methods: {
@@ -73,6 +76,15 @@ export default {
             }
 
             return price.join('');
+        },
+        selectProduct() {
+            const obj = {
+                ...this.product,
+                amount: this.amount
+            }
+
+            this.cartStore.products.push(obj)
+            this.amount = 1
         }
     }
 }

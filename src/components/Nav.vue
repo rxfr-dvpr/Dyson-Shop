@@ -17,6 +17,8 @@
 
                 <router-link to="/cart" class="shop-cart">
                     <lord-icon src="https://cdn.lordicon.com/evyuuwna.json" trigger="loop" delay="1300" colors="primary:#ffffff" style="width:35px;height:35px" class="shop-cart-icon"></lord-icon>
+
+                    <span class="cart-status" v-if="cartStatus">{{ cartStatus }}</span>
                 </router-link>
             </div>
         </div>
@@ -25,12 +27,18 @@
 
 <script>
 import { navStore } from "@/stores/navStore.js";
+import { cartStore } from "@/stores/cartStore.js";
 
 export default {
     name: 'Navigation',
     data() {
         return {
             store: navStore()
+        }
+    },
+    computed: {
+        cartStatus() {
+            return cartStore().products.length
         }
     }
 }
@@ -103,6 +111,7 @@ export default {
 
     .shop-cart {
         font-size: 22px;
+        display: flex;
 
         &-icon {
             fill: var(--main-white);
@@ -113,6 +122,18 @@ export default {
             &-icon {
                 color: var(--main-pink);
             }
+        }
+
+        .cart-status {
+            height: max-content;
+            width: 20px;
+            height: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            display: grid;
+            place-items: center;
+            background: var(--main-white);
+            border-radius: 50%;
         }
     }
 }

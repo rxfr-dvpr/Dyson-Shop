@@ -14,7 +14,8 @@ export const productsStore = defineStore('Products Store', {
                 price: {
                     new: 59990,
                     old: 69990
-                }
+                },
+                id: Math.random() + 1 + ''
             },
             {
                 img: 'https://firebasestorage.googleapis.com/v0/b/dyson-shop-dfb32.appspot.com/o/ProductsSection%2F2.png?alt=media&token=77e77274-acfd-4c33-9c98-b1351ec4d9c4',
@@ -26,7 +27,8 @@ export const productsStore = defineStore('Products Store', {
                 price: {
                     new: 47990,
                     old: 51990
-                }
+                },
+                id: Math.random() + 1 + ''
             },
             {
                 img: 'https://firebasestorage.googleapis.com/v0/b/dyson-shop-dfb32.appspot.com/o/ProductsSection%2F3.png?alt=media&token=0c9b0ba3-4c99-4328-b42b-eae56bf9eeca',
@@ -38,7 +40,8 @@ export const productsStore = defineStore('Products Store', {
                 price: {
                     new: 46990,
                     old: 51990
-                }
+                },
+                id: Math.random() + 1 + ''
             },
             {
                 img: 'https://firebasestorage.googleapis.com/v0/b/dyson-shop-dfb32.appspot.com/o/ProductsSection%2F4.png?alt=media&token=d66d6c6d-1a0c-4607-bb20-ca2c0b4a95c5',
@@ -50,7 +53,8 @@ export const productsStore = defineStore('Products Store', {
                 price: {
                     new: 43215,
                     old: 86431
-                }
+                },
+                id: Math.random() + 1 + ''
             },
             {
                 img: 'https://firebasestorage.googleapis.com/v0/b/dyson-shop-dfb32.appspot.com/o/ProductsSection%2F5.jpg?alt=media&token=2ca84416-1071-4d60-9c52-0a02bb4946a1',
@@ -62,7 +66,8 @@ export const productsStore = defineStore('Products Store', {
                 price: {
                     new: 80913,
                     old: 91560
-                }
+                },
+                id: Math.random() + 1 + ''
             },
             {
                 img: 'https://firebasestorage.googleapis.com/v0/b/dyson-shop-dfb32.appspot.com/o/ProductsSection%2F6.jpg?alt=media&token=9cb0c6f3-4470-40a8-9ebc-e82bb8d668cb',
@@ -74,7 +79,8 @@ export const productsStore = defineStore('Products Store', {
                 price: {
                     new: 73699,
                     old: 85325
-                }
+                },
+                id: Math.random() + 1 + ''
             },
         ],
         tags: [
