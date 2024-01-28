@@ -18,7 +18,7 @@
                 <router-link to="/cart" class="shop-cart">
                     <lord-icon src="https://cdn.lordicon.com/evyuuwna.json" trigger="loop" delay="1300" colors="primary:#ffffff" style="width:35px;height:35px" class="shop-cart-icon"></lord-icon>
 
-                    <span class="cart-status" v-if="cartStatus">{{ cartStatus }}</span>
+                    <span class="cart-status" >{{ cartStatus }}</span>
                 </router-link>
             </div>
         </div>
@@ -38,7 +38,7 @@ export default {
     },
     computed: {
         cartStatus() {
-            return cartStore().products.length
+            return cartStore().cartList.length
         }
     }
 }
@@ -124,6 +124,7 @@ export default {
             }
         }
 
+
         .cart-status {
             height: max-content;
             width: 20px;
@@ -134,6 +135,13 @@ export default {
             place-items: center;
             background: var(--main-white);
             border-radius: 50%;
+        }
+        
+        &.router-link-exact-active {
+            .cart-status {
+                background: var(--main-pink);
+                color: var(--main-white);
+            }
         }
     }
 }

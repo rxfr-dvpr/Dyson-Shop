@@ -83,7 +83,7 @@ export default {
                 amount: this.amount
             }
 
-            this.cartStore.products.push(obj)
+            this.cartStore.cartList.push(obj)
             this.amount = 1
         }
     }

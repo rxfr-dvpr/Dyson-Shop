@@ -1,11 +1,15 @@
 <template>
-  <h1 class="all-title">Cart Page</h1>
+  <CartList/>
 </template>
 
 <script>
+import CartList from '@/components/CartList.vue'
 
 export default {
-  name: 'Cart Page'
+  name: 'Cart Page',
+  components: {
+    CartList
+  }
 }
 
 </script>
