@@ -5,6 +5,7 @@
     --main-pink: #C5358C;
     --main-white: #FFF;
     --main-green: #68AE5C;
+    --main-red: #DC5B5B;
 }
 
 * {
@@ -13,6 +14,13 @@
     box-sizing: border-box;
     font-family: 'Exo 2', sans-serif;
     color: var(--main-black);
+    user-select: none;
+
+    &:disabled, &[disabled="true"] {
+        opacity: .3;
+        pointer-events: none;
+        user-select: none;
+    }
 }
 
 html {
