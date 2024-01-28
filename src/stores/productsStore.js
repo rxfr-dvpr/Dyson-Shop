@@ -76,6 +76,28 @@ export const productsStore = defineStore('Products Store', {
                     old: 85325
                 }
             },
+        ],
+        tags: [
+            {
+                name: 'dyson стайлер для длинных волос',
+                type: '',
+                active: false
+            },
+            {
+                name: 'dyson стайлер красный',
+                type: '',
+                active: false
+            },
+            {
+                name: 'dyson hs01 airwrap compliete',
+                type: '',
+                active: false
+            },
+            {
+                name: 'фен щетка дайсон',
+                type: '',
+                active: false
+            },
         ]
     })
 })

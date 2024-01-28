@@ -123,7 +123,7 @@ export default {
         padding: 0 12px;
 
         &-name {
-            font-size: calc(10px + 14 * (100vw / 1920));
+            font-size: calc(14px + 10 * (100vw / 1920));
             font-weight: 300;
             overflow: hidden;
             text-overflow: ellipsis;
