@@ -6,6 +6,7 @@
 
             <span class="line-border" v-if="!store.cartList.length"></span>
 
+
             <div class="cart__list" v-if="store.cartList.length">
                 <div class="cart__list-item" v-for="(item, idx) in store.cartList" :key="idx">
                     <img :src="item.img" alt="" class="item-img">
@@ -21,8 +22,11 @@
                             </span>
 
                             <p class="item-descr-price">
-                                <span class="new-price">{{ item.price.new }}</span>
-                                <span class="old-price">{{ item.price.old }}</span>
+                                Итоговая цена:
+                                <span class="new-price">{{ itemPerPrice(item.price.new, item.amount) }} руб.</span>
+                                <span class="old-price">{{ itemPerPrice(item.price.old, item.amount) }} руб.</span>
+
+                                <span class="discount-price">Скидка {{ item.status.discount }}%</span>
                             </p>
                         </div>
                     </div>
@@ -32,6 +36,11 @@
             </div>
 
             <span class="no-product-txt frstUpper" v-else>{{ store.noProductTxt }}...</span>
+
+            <span class="cart__total-price" v-if="store.cartList.length">
+                Итоговая стоимость без доставки: <span class="num">{{ splitPrice(totalPrice) }}</span> руб.
+            </span>
+
         </div>
     </div>
   </section>
@@ -50,6 +59,39 @@ export default {
     methods: {
         delProduct(id) {
             this.store.cartList = this.store.cartList.filter(item => item.id !== id)
+        },
+        splitPrice(price) {
+            price = price.toString().split('');
+
+            if (price.length == 6) {
+                price.splice(3, 0, ' ')
+            } else if (price.length == 5) {
+                price.splice(2, 0, ' ')
+            } else if (price.length == 7) {
+                price.splice(1, 0, ' ')
+                price.splice(5, 0, ' ')
+            } else if (price.length == 8) {
+                price.splice(2, 0, ' ')
+                price.splice(6, 0, ' ')
+            } else if (price.length == 9) {
+                price.splice(3, 0, ' ')
+                price.splice(7, 0, ' ')
+            } else {
+                price == price
+            }
+
+            let editedPrice = price.join('')
+            return editedPrice
+        },
+        itemPerPrice(price, amount) {
+            return this.splitPrice(price * amount)
+        }
+    },
+    computed: {
+        totalPrice() {
+            let price = 0
+            this.store.cartList.map(item => price += item.price.new * item.amount)
+            return price
         }
     }
 }
@@ -148,6 +190,37 @@ export default {
                         }
                     }
                 }
+
+                &-price {
+                    max-width: 450px;
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    flex-wrap: wrap;
+                    gap: 5px;
+                    font-size: calc(18px + 4 * (100vw / 1920));
+                    color: #8B8B8B;
+
+                    .new-price {
+                        font-weight: 600;
+                    }
+                    
+                    .old-price {
+                        font-size: calc(14px + 4 * (100vw / 1920));
+                        font-weight: 600;
+                        margin-left: auto;
+                        text-decoration: line-through;
+                        color: #8B8B8B;
+                    }
+
+                    .discount-price {
+                        width: 100%;
+                        display: block;
+                        font-size: 15px;
+                        font-weight: 500;
+                        color: var(--main-pink);
+                    }
+                }
             }
 
             .delete-btn {
@@ -168,6 +241,30 @@ export default {
                     }
                 }
             }
+        }
+    }
+
+    .cart__total-price {
+        font-size: calc(22px + 10 * (100vw / 1920));
+        color: #8B8B8B;
+        font-weight: 500;
+
+        .num {
+            font-weight: 600;   
+        }
+    }
+}
+
+@media (min-width: 1920px) {
+    .cart__total-price {
+        font-size: 32px !important;
+    }
+
+    .item-descr-price {
+        font-size: 22px !important;
+
+        .old-price {
+            font-size: 18px !important;
         }
     }
 }

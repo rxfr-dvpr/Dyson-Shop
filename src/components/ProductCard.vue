@@ -27,7 +27,7 @@
             <span class="increment ctrl-btn" @click="amount < 99 ? amount++ : '' "><i class="fal fa-plus"></i></span>
         </span>
 
-        <button class="product-card-btn all-btn dark" @click="selectProduct" 
+        <button class="product-card-btn all-btn dark" @click="selectProduct(product.id)" 
         :disabled="!product.status.available">В корзину</button>
     </div>
   </div>
@@ -52,7 +52,8 @@ export default {
                 price: {
                     new: 0,
                     old: 0
-                }
+                },
+                id: 1
             }
         }
     },
@@ -77,14 +78,25 @@ export default {
 
             return price.join('');
         },
-        selectProduct() {
+        selectProduct(idx) {
             const obj = {
                 ...this.product,
                 amount: this.amount
             }
 
-            this.cartStore.cartList.push(obj)
-            this.amount = 1
+            const hasIndex = this.cartStore.cartList.findIndex(item => item.id === idx);
+
+            if (hasIndex === -1) {
+                this.cartStore.cartList.push(obj);
+                this.amount = 1;
+            } else {
+                this.cartStore.cartList.map(item => {
+                    if (item.id === idx) {
+                        item.amount += this.amount
+                        this.amount = 1;
+                    }
+                })
+            }
         }
     }
 }
