@@ -21,7 +21,7 @@ export const productsStore = defineStore('Products Store', {
                 img: 'https://firebasestorage.googleapis.com/v0/b/dyson-shop-dfb32.appspot.com/o/ProductsSection%2F2.png?alt=media&token=77e77274-acfd-4c33-9c98-b1351ec4d9c4',
                 name: 'Фен Dyson Supersonic HD07 с 5 насадками и подставкой',
                 status: {
-                    available: true,
+                    available: false,
                     discount: 8
                 },
                 price: {
@@ -47,7 +47,7 @@ export const productsStore = defineStore('Products Store', {
                 img: 'https://firebasestorage.googleapis.com/v0/b/dyson-shop-dfb32.appspot.com/o/ProductsSection%2F4.png?alt=media&token=d66d6c6d-1a0c-4607-bb20-ca2c0b4a95c5',
                 name: 'Мультистайлер HS05 Airwrap Complete Long + сумка в подарок',
                 status: {
-                    available: false,
+                    available: true,
                     discount: 50
                 },
                 price: {

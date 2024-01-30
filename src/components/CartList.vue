@@ -6,7 +6,6 @@
 
             <span class="line-border" v-if="!store.cartList.length"></span>
 
-
             <div class="cart__list" v-if="store.cartList.length">
                 <div class="cart__list-item" v-for="(item, idx) in store.cartList" :key="idx">
                     <img :src="item.img" alt="" class="item-img">
@@ -14,29 +13,24 @@
                     <div class="item-descr">
                         <p class="item-descr-name">{{ item.name }}</p>
 
-                        <div class="item-descr-bottom">
-                            <span class="item-amount">
-                                <span class="decrement ctrl-btn" @click="item.amount > 1 ? item.amount-- : '' "><i class="fal fa-minus"></i></span>
-                                <span class="amount-num">{{ item.amount }}</span>
-                                <span class="increment ctrl-btn" @click="item.amount < 99 ? item.amount++ : '' "><i class="fal fa-plus"></i></span>
-                            </span>
+                        <span class="item-amount">
+                            <span class="decrement ctrl-btn" @click="item.amount > 1 ? item.amount-- : '' "><i class="fal fa-minus"></i></span>
+                            <span class="amount-num">{{ item.amount }}</span>
+                            <span class="increment ctrl-btn" @click="item.amount < 99 ? item.amount++ : '' "><i class="fal fa-plus"></i></span>
+                        </span>
 
-                            <p class="item-descr-price">
-                                Итоговая цена:
-                                <span class="new-price">{{ itemPerPrice(item.price.new, item.amount) }} руб.</span>
-                                <span class="old-price">{{ itemPerPrice(item.price.old, item.amount) }} руб.</span>
-
-                                <span class="discount-price">Скидка {{ item.status.discount }}%</span>
-                            </p>
-                        </div>
+                        <p class="item-descr-price">
+                            <span class="new-price">{{ itemPerPrice(item.price.new, item.amount) }} ₽</span>
+                            <span class="discount-price">Скидка {{ item.status.discount }}%</span>
+                        </p>
                     </div>
 
-                    <button class="delete-btn" @click="delProduct(item.id)"><i class="fal fa-times"></i></button>
+                    <button class="delete-btn" @click="delProduct(item.id)"><i class="far fa-trash-alt"></i></button>
                 </div>
             </div>
 
             <span class="no-product-txt frstUpper" v-else>{{ store.noProductTxt }}...</span>
-
+            
             <span class="cart__total-price" v-if="store.cartList.length">
                 Итоговая стоимость без доставки: <span class="num">{{ splitPrice(totalPrice) }}</span> руб.
             </span>
@@ -103,7 +97,6 @@ export default {
 .cart__section {
     width: 100%;
     padding: 70px 0 150px;
-    min-height: 40vh;
 
     .row {
         flex-direction: column;
@@ -122,82 +115,75 @@ export default {
     }
 
     .cart__list {
+        max-width: 850px;
         width: 100%;
         display: flex;
         flex-direction: column;
-        row-gap: 35px;
-        margin-top: 30px;
+        row-gap: 25px;
 
         &-item {
             width: 100%;
             display: flex;
-            border-bottom: 1px solid rgba($color: #000000, $alpha: .1);
-            padding-bottom: 35px;
-            gap: 50px;
+            justify-content: space-between;
+            padding: 10px 20px 10px 10px;
+            gap: 15px;
+            border-radius: 15px;
+            box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.25);
 
             .item-img {
-                max-width: 150px;
+                max-width: 80px;
                 width: 100%;
+                height: max-content;
             }
 
             .item-descr {
-                max-width: 895px;
+                max-width: 650px;
                 width: 100%;
-                min-height: 100%;
                 display: flex;
-                flex-direction: column;
                 justify-content: space-between;
-                row-gap: 25px;
+                align-items: center;
+                gap: 10px;
 
                 &-name {
-                    font-size: 25px;
+                    max-width: 250px;
+                    width: 100%;
+                    font-size: 18px;
                     font-weight: 600;
+                    display: -webkit-box;
                     overflow: hidden;
                     text-overflow: ellipsis;
-                    display: -webkit-box;
                     -webkit-line-clamp: 2;
                     -webkit-box-orient: vertical;
                 }
 
-                &-bottom {
+                .item-amount {
+                    max-width: max-content;
                     width: 100%;
+                    padding: 5px;
+                    border-radius: 3px;
                     display: flex;
-                    justify-content: space-between;
-                    gap: 25px;
+                    gap: 6px;
                     align-items: center;
-
-                    .item-amount {
-                        max-width: 120px;
-                        width: 100%;
-                        padding: 5px;
-                        border-radius: 3px;
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                        font-size: 20px;
-                        background: #E9E9E9;
-
-                        .amount-num {
-                            width: 25px;
-                            text-align: center;
-                        }
-
-                        .ctrl-btn {
-                            width: 25px;
-                            cursor: pointer;
-                            background: var(--main-white);
-                            text-align: center;
-                        }
+                    font-size: 20px;
+                    background: #E9E9E9;
+                    
+                    .amount-num {
+                        width: 25px;
+                        text-align: center;
+                    }
+                    .ctrl-btn {
+                        width: 25px;
+                        cursor: pointer;
+                        background: var(--main-white);
+                        text-align: center;
                     }
                 }
 
                 &-price {
-                    max-width: 450px;
+                    max-width: 150px;
                     width: 100%;
                     display: flex;
-                    align-items: center;
-                    flex-wrap: wrap;
-                    gap: 5px;
+                    flex-direction: column;
                     font-size: calc(18px + 4 * (100vw / 1920));
                     color: #8B8B8B;
 
@@ -227,7 +213,7 @@ export default {
                 margin: auto 0 auto auto;
                 background: transparent;
                 border: 0;
-                font-size: 25px;
+                font-size: 22px;
                 height: max-content;
 
                 i {
@@ -245,19 +231,15 @@ export default {
     }
 
     .cart__total-price {
-        font-size: calc(22px + 10 * (100vw / 1920));
+        font-size: calc(18px + 10 * (100vw / 1920));
         color: #8B8B8B;
-        font-weight: 500;
-
-        .num {
-            font-weight: 600;   
-        }
+        font-weight: 600;
     }
 }
 
 @media (min-width: 1920px) {
     .cart__total-price {
-        font-size: 32px !important;
+        font-size: 28px !important;
     }
 
     .item-descr-price {
