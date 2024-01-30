@@ -104,6 +104,7 @@ export const productsStore = defineStore('Products Store', {
                 type: '',
                 active: false
             },
-        ]
+        ],
+        popUpText: 'Товар добавлен в корзину!'
     })
 })

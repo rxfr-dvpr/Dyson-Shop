@@ -35,6 +35,7 @@
 
 <script>
 import { cartStore } from "@/stores/cartStore.js";
+import { productsStore } from "@/stores/productsStore.js";
 
 export default {
     name: 'Product Card',
@@ -60,7 +61,8 @@ export default {
     data() {
         return {
             amount: 1,
-            cartStore: cartStore()
+            cartStore: cartStore(),
+            prStore: productsStore()
         }
     },
     methods: {
@@ -97,6 +99,8 @@ export default {
                     }
                 })
             }
+
+            this.$emit('openAlert')
         }
     }
 }
