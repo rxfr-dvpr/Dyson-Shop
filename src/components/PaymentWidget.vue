@@ -91,7 +91,9 @@
       >
     </div>
 
-    <button class="pay-btn all-btn dark" type="submit">{{ splitPrice(cartStore.totalPrice + shipment) }} ₽ <span class="btn-txt">Оплатить <i class="fal fa-long-arrow-right"></i></span></button>
+    <button class="pay-btn all-btn dark" type="submit" :disabled="cartStore.popover.opened">
+      {{ splitPrice(cartStore.totalPrice + shipment) }} ₽ <span class="btn-txt">Оплатить <i class="fal fa-long-arrow-right"></i></span>
+    </button>
   </form>
 </template>
 
@@ -136,15 +138,23 @@ export default {
       return editedPrice;
     },
     pay() {
-      if (this.store.cardName.value !== '' && this.store.cardNum.value !== '' 
-      && this.store.exprDate.value !== '' && this.store.ccvInp.value !== '') {
-        alert('Purchased')
-        
-        this.$router.push('/')
+      const store = this.store
+      if (store.cardName.value !== '' && store.cardNum.value !== '' 
+      && store.exprDate.value !== '' && store.ccvInp.value !== '') {
+        this.cartStore.popover.opened = true
+        store.cardName.value = store.cardNum.value = store.exprDate.value = store.ccvInp.value = ''
 
         setTimeout(() => {
-          location.reload()
-        }, 500);
+          this.cartStore.popover.opened = false
+        }, 2000);
+
+        this.cartStore.cartList = []
+
+        // this.$router.push('/')
+
+        // setTimeout(() => {
+        //   location.reload()
+        // }, 500);
       }
     }
   },

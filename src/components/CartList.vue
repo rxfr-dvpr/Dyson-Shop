@@ -1,52 +1,56 @@
 <template>
-  <section class="cart__section">
-    <div class="container">
-        <div class="row">
-            <h2 class="cart-title all-title">{{ store.title }} ({{ store.cartList.length }})</h2>
+    <Popover :opened="store.popover.opened" :txt="store.popover.txt"/>
 
-            <span class="line-border" v-if="!store.cartList.length"></span>
+    <section class="cart__section">
+      <div class="container">
+          <div class="row">
+              <h2 class="cart-title all-title">{{ store.title }} ({{ store.cartList.length }})</h2>
 
-            <div class="cart-wrapper" v-if="store.cartList.length">
-                <div class="cart__list">
-                    <div class="cart__list-item" v-for="(item, idx) in store.cartList" :key="idx">
-                        <img :src="item.img" alt="" class="item-img">
+              <span class="line-border" v-if="!store.cartList.length"></span>
 
-                        <div class="item-descr">
-                            <p class="item-descr-name">{{ item.name }}</p>
+              <div class="cart-wrapper" v-if="store.cartList.length">
+                  <div class="cart__list">
+                      <div class="cart__list-item" v-for="(item, idx) in store.cartList" :key="idx">
+                          <img :src="item.img" alt="" class="item-img">
 
-                            <span class="item-amount">
-                                <span class="decrement ctrl-btn" @click="item.amount > 1 ? item.amount-- : '' "><i class="fal fa-minus"></i></span>
-                                <span class="amount-num">{{ item.amount }}</span>
-                                <span class="increment ctrl-btn" @click="item.amount < 99 ? item.amount++ : '' "><i class="fal fa-plus"></i></span>
-                            </span>
+                          <div class="item-descr">
+                              <p class="item-descr-name">{{ item.name }}</p>
 
-                            <p class="item-descr-price">
-                                <span class="new-price">{{ itemPerPrice(item.price.new, item.amount) }} ₽</span>
-                                <span class="discount-price">Скидка {{ item.status.discount }}%</span>
-                            </p>
-                        </div>
+                              <span class="item-amount">
+                                  <span class="decrement ctrl-btn" @click="item.amount > 1 ? item.amount-- : '' "><i class="fal fa-minus"></i></span>
+                                  <span class="amount-num">{{ item.amount }}</span>
+                                  <span class="increment ctrl-btn" @click="item.amount < 99 ? item.amount++ : '' "><i class="fal fa-plus"></i></span>
+                              </span>
 
-                        <button class="delete-btn" @click="delProduct(item.id)"><i class="far fa-trash-alt"></i></button>
-                    </div>
-                </div>
+                              <p class="item-descr-price">
+                                  <span class="new-price">{{ itemPerPrice(item.price.new, item.amount) }} ₽</span>
+                                  <span class="discount-price">Скидка {{ item.status.discount }}%</span>
+                              </p>
+                          </div>
 
-                <PaymentWidget v-if="store.cartList.length"/>
-            </div>
+                          <button class="delete-btn" @click="delProduct(item.id)"><i class="far fa-trash-alt"></i></button>
+                      </div>
+                  </div>
 
-            <span class="no-product-txt frstUpper" v-else>{{ store.noProductTxt }}...</span>
-        </div>
-    </div>
-  </section>
+                  <PaymentWidget v-if="store.cartList.length"/>
+              </div>
+
+              <span class="no-product-txt frstUpper" v-else>{{ store.noProductTxt }}...</span>
+          </div>
+      </div>
+    </section>
 </template>
 
 <script>
 import { cartStore } from "@/stores/cartStore.js";
 import PaymentWidget from './PaymentWidget.vue';
+import Popover from './Popover.vue';
 
 export default {
     name: 'Cart Section',
     components: {
-        PaymentWidget
+        PaymentWidget,
+        Popover
     },
     data() {
         return {
