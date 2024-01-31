@@ -152,3 +152,22 @@ input[type=number] {
 .all-padding {
     padding: 150px 0;
 }
+
+.card__types-item {
+    i {
+        color: var(--main-white);
+        transition: .4s;
+    }
+
+    &:hover {
+        i {
+            color: var(--main-pink);
+        }
+    }
+
+    &.active {
+        i {
+            color: var(--main-pink);
+        }
+    }
+}

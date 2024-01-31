@@ -6,35 +6,34 @@
 
             <span class="line-border" v-if="!store.cartList.length"></span>
 
-            <div class="cart__list" v-if="store.cartList.length">
-                <div class="cart__list-item" v-for="(item, idx) in store.cartList" :key="idx">
-                    <img :src="item.img" alt="" class="item-img">
+            <div class="cart-wrapper" v-if="store.cartList.length">
+                <div class="cart__list">
+                    <div class="cart__list-item" v-for="(item, idx) in store.cartList" :key="idx">
+                        <img :src="item.img" alt="" class="item-img">
 
-                    <div class="item-descr">
-                        <p class="item-descr-name">{{ item.name }}</p>
+                        <div class="item-descr">
+                            <p class="item-descr-name">{{ item.name }}</p>
 
-                        <span class="item-amount">
-                            <span class="decrement ctrl-btn" @click="item.amount > 1 ? item.amount-- : '' "><i class="fal fa-minus"></i></span>
-                            <span class="amount-num">{{ item.amount }}</span>
-                            <span class="increment ctrl-btn" @click="item.amount < 99 ? item.amount++ : '' "><i class="fal fa-plus"></i></span>
-                        </span>
+                            <span class="item-amount">
+                                <span class="decrement ctrl-btn" @click="item.amount > 1 ? item.amount-- : '' "><i class="fal fa-minus"></i></span>
+                                <span class="amount-num">{{ item.amount }}</span>
+                                <span class="increment ctrl-btn" @click="item.amount < 99 ? item.amount++ : '' "><i class="fal fa-plus"></i></span>
+                            </span>
 
-                        <p class="item-descr-price">
-                            <span class="new-price">{{ itemPerPrice(item.price.new, item.amount) }} ₽</span>
-                            <span class="discount-price">Скидка {{ item.status.discount }}%</span>
-                        </p>
+                            <p class="item-descr-price">
+                                <span class="new-price">{{ itemPerPrice(item.price.new, item.amount) }} ₽</span>
+                                <span class="discount-price">Скидка {{ item.status.discount }}%</span>
+                            </p>
+                        </div>
+
+                        <button class="delete-btn" @click="delProduct(item.id)"><i class="far fa-trash-alt"></i></button>
                     </div>
-
-                    <button class="delete-btn" @click="delProduct(item.id)"><i class="far fa-trash-alt"></i></button>
                 </div>
+
+                <PaymentWidget v-if="store.cartList.length"/>
             </div>
 
             <span class="no-product-txt frstUpper" v-else>{{ store.noProductTxt }}...</span>
-            
-            <span class="cart__total-price" v-if="store.cartList.length">
-                Итоговая стоимость без доставки: <span class="num">{{ splitPrice(totalPrice) }}</span> руб.
-            </span>
-
         </div>
     </div>
   </section>
@@ -42,9 +41,13 @@
 
 <script>
 import { cartStore } from "@/stores/cartStore.js";
+import PaymentWidget from './PaymentWidget.vue';
 
 export default {
     name: 'Cart Section',
+    components: {
+        PaymentWidget
+    },
     data() {
         return {
             store: cartStore()
@@ -80,13 +83,6 @@ export default {
         itemPerPrice(price, amount) {
             return this.splitPrice(price * amount)
         }
-    },
-    computed: {
-        totalPrice() {
-            let price = 0
-            this.store.cartList.map(item => price += item.price.new * item.amount)
-            return price
-        }
     }
 }
 
@@ -112,6 +108,13 @@ export default {
         width: 100%;
         height: 1px;
         background: rgba($color: #000000, $alpha: .2);
+    }
+
+    .cart-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
     }
 
     .cart__list {
@@ -229,19 +232,9 @@ export default {
             }
         }
     }
-
-    .cart__total-price {
-        font-size: calc(18px + 10 * (100vw / 1920));
-        color: #8B8B8B;
-        font-weight: 600;
-    }
 }
 
 @media (min-width: 1920px) {
-    .cart__total-price {
-        font-size: 28px !important;
-    }
-
     .item-descr-price {
         font-size: 22px !important;
 
