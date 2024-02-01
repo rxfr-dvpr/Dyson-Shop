@@ -40,6 +40,8 @@ export default {
     .row {
         justify-content: space-between;
         align-items: center;
+        flex-wrap: unset !important;
+        row-gap: 30px;
     }
 
     .header__descr {
@@ -70,5 +72,39 @@ export default {
         font-size: 26px !important;
     }
 }
+
+@media (max-width: 1110px) {
+
+    .row {
+        align-items: flex-start !important;
+    }
+
+    .header-img {
+        max-width: 400px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding-top: 50px;
+
+        .row {
+            flex-direction: column;
+            align-items: center !important;
+        }
+    
+        &__descr {
+            align-items: center;
+            text-align: center;
+            row-gap: 15px !important;
+        }
+    
+        &-img {
+            max-width: 400px !important;
+        }
+    }
+}
+
+
 
 </style>
