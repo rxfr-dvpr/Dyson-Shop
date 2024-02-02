@@ -90,4 +90,13 @@ export default {
     }
 }
 
+@media (max-width: 992px) {
+    .advantages-title {
+        text-align: center;
+    }
+
+    .advantages__cards-item {
+        max-width: 370px !important;
+    }
+}
 </style>
