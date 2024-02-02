@@ -143,4 +143,18 @@ export default {
     }
 }
 
+@media (max-width: 586px) {
+    .category-list {
+        max-width: max-content !important;
+        margin: 0 auto;
+        grid-template-columns: repeat(1, 350px) !important;
+    }
+}
+
+@media (max-width: 400px) {
+    .category-list {
+        grid-template-columns: repeat(1, 1fr) !important;
+    }
+}
+
 </style>

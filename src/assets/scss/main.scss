@@ -43,7 +43,7 @@ button {
     max-width: 1400px;
     width: 100%;
     height: 100%;
-    padding: 0 30px;
+    padding: 0 15px;
     margin: 0 auto;
 }
 
@@ -169,5 +169,23 @@ input[type=number] {
         i {
             color: var(--main-pink);
         }
+    }
+}
+
+@media (max-width: 1110px) {
+    .all-padding {
+        padding: 120px 0;
+    }
+}
+
+@media (max-width: 992px) {
+    .all-padding {
+        padding: 90px 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .all-padding {
+        padding: 70px 0;
     }
 }
