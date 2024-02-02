@@ -38,6 +38,7 @@ export default {
         justify-content: space-between;
         align-items: center;
         gap: 20px;
+        flex-wrap: unset !important;
     }
 
     .opinion__descr {
@@ -51,6 +52,24 @@ export default {
     .opinion-img {
         max-width: 500px;
         width: 100%;
+    }
+}
+
+@media (max-width: 1350px) {
+    .opinion-img {
+        max-width: 400px !important;
+    }
+}
+
+@media (max-width: 992px) {
+    .row {
+        flex-direction: column;
+    }
+
+    .opinion__descr {
+        max-width: 700px !important;
+        align-items: center;
+        text-align: center;
     }
 }
 
