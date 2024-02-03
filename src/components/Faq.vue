@@ -65,12 +65,13 @@ export default {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                font-size: 20px;
+                font-size: calc(13px + 7 * (100vw / 1920));
                 font-weight: 600;
                 cursor: pointer;
+                gap: 20px;
 
                 .plus-btn {
-                    font-size: 35px;
+                    font-size: calc(25px + 10 * (100vw / 1920));
                     font-weight: 400;
                     transition: .3s;
 
@@ -104,6 +105,23 @@ export default {
                     opacity: 1;
                 }
             }
+        }
+    }
+}
+
+@media (min-width: 1920px) {
+    .faq-question {
+        font-size: 20px !important;
+    }
+}
+
+@media (max-width: 1024px) {
+    .faq__list {
+        row-gap: 25px !important;
+        padding-bottom: 25px !important;
+
+        &-item {
+            padding-top: 25px !important;
         }
     }
 }
