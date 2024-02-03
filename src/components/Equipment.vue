@@ -5,9 +5,9 @@
             <h2 class="equipment-title all-title">{{ store.title }}</h2>
 
             <div class="main-swiper">
-                <swiper class="equipment-swiper" :autoplay="{ delay: 1500, disableOnInteraction: false}"
+                <swiper class="equipment-swiper"
                 :navigation="{ nextEl: '.equipment-control.right', prevEl: '.equipment-control.left'}" 
-                :modules="modules" :slidesPerView="4" :spaceBetween="20">
+                :modules="modules" :breakpoints="breakpoints" :spaceBetween="15">
                     <swiper-slide class="equipment-swiper-slide" v-for="(slide, idx) in store.slider" :key="idx">
                         <img :src="slide.img" alt="" class="slide-img">
                         <p class="slide-name">{{ slide.name }}</p>
@@ -41,7 +41,18 @@ export default {
     data() {
         return {
             store: equipStore(),
-            modules: [Navigation, Autoplay]
+            modules: [Navigation, Autoplay],
+            breakpoints: {
+                768: {
+                  slidesPerView: 2,
+                },
+                992: {
+                  slidesPerView: 3,
+                },
+                1300: {
+                  slidesPerView: 4,
+                }
+            }
         }
     }
 }
@@ -65,6 +76,7 @@ export default {
     }
 
     .equipment-swiper {
+        max-width: 92%;
         width: 100%;
 
         .swiper-wrapper {
@@ -81,6 +93,7 @@ export default {
             display: flex;
             flex-direction: column;
             row-gap: 15px;
+            align-items: center;
 
             .slide-img {
                 max-width: 245px;
@@ -104,7 +117,8 @@ export default {
     }
 
     .equipment-controls {
-        width: 110%;
+        max-width: 110%;
+        width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -138,7 +152,7 @@ export default {
                 }
             }
 
-            &:hover {
+            &:hover, &:active {
                 border-color: var(--main-pink);
 
                 i {
@@ -146,6 +160,42 @@ export default {
                 }
             }
         }
+    }
+}
+
+@media (max-width: 1110px) {
+    .equipment-swiper-slide {
+        text-align: center;
+    }
+}
+
+@media (max-width: 992px) {
+    .equipment-swiper {
+        max-width: 85% !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .equipment-swiper {
+        max-width: 65% !important;
+    }
+}
+
+@media (max-width: 668px) {
+    .equipment-swiper {
+        max-width: 75% !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .equipment-swiper {
+        max-width: 80% !important;
+    }
+}
+
+@media (max-width: 478px) {
+    .equipment-swiper {
+        max-width: 95% !important;
     }
 }
 
