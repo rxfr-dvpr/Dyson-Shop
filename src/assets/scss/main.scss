@@ -72,16 +72,6 @@ button {
     }
 }
 
-@media (min-width: 1920px) {
-    .all-title {
-        font-size: 42px !important;
-    }
-
-    .all-txt {
-        font-size: 18px !important;
-    }
-}
-
 .all-btn {
     background: var(--main-pink);
     padding: 8px 20px 10px;
@@ -89,7 +79,7 @@ button {
     border: 0;
     max-width: max-content;
     width: 100%;
-    font-size: 22px;
+    font-size: calc(15px + 7 * (100vw / 1920));
     border-radius: 3px;
     cursor: pointer;
     transition: .3s;
@@ -169,6 +159,21 @@ input[type=number] {
         i {
             color: var(--main-pink);
         }
+    }
+}
+
+@media (min-width: 1920px) {
+
+    .all-btn {
+        font-size: 22px !important;
+    }
+
+    .all-title {
+        font-size: 42px !important;
+    }
+
+    .all-txt {
+        font-size: 18px !important;
     }
 }
 

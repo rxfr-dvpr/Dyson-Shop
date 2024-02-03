@@ -10,7 +10,7 @@
 
     <Equipment/>
 
-    <Reviews/>
+    <!-- <Reviews/> -->
     
     <Faq/>
 

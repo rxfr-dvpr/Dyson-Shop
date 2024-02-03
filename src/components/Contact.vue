@@ -62,7 +62,9 @@ export default {
 
     .row {
         justify-content: space-between;
-        row-gap: 50px;
+        row-gap: 35px;
+        column-gap: 20px;
+        flex-wrap: unset;
     }
 
     .all-form {
@@ -87,7 +89,7 @@ export default {
         display: flex;
         gap: 15px;
         align-items: center;
-        font-size: 15px;
+        font-size: calc(10px + 5 * (100vw / 1920));
         user-select: none;
         cursor: pointer;
 
@@ -95,11 +97,9 @@ export default {
             cursor: pointer;
         }
 
-        .checkbox {
-            max-width: 25px;
-            width: 100%;
-            max-height: 25px;
-            height: 100%;
+        .checkbox {            
+            width: 25px;
+            height: 20px;
             border: solid 1px var(--main-black);
             border-radius: 3px;
             display: grid;
@@ -118,6 +118,27 @@ export default {
                 }
             }
         }
+    }
+}
+
+@media (min-width: 1920px) {
+    .subscribe-check {
+        font-size: 15px !important;
+    }
+}
+
+@media (max-width: 800px) {
+    .row {
+        flex-direction: column;
+    }
+
+    .all-form {
+        max-width: 100% !important;
+    }
+
+    .checkbox {
+        width: 15px !important;
+        height: 15px !important;
     }
 }
 
