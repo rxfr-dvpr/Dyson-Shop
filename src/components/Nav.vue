@@ -183,7 +183,6 @@ export default {
 }
 
 @media (max-width: 992px) {
-
     .row {
         gap: 0 !important;
     }
@@ -213,4 +212,9 @@ export default {
     }
 }
 
+@media (max-width: 768px) {
+    .nav-logo {
+        max-width: 110px !important;
+    }
+}
 </style>

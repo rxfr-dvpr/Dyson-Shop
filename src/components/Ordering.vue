@@ -83,4 +83,27 @@ export default {
     }
 }
 
+
+@media (max-width: 876px) {
+    .ordering-steps {
+        grid-template-columns: repeat(2, 1fr) !important;
+        justify-items: center;
+
+        .order-num {
+            width: 70px !important;
+            height: 70px !important;
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .ordering-steps {
+        grid-template-columns: repeat(1, 1fr) !important;
+
+        .order-num {
+            width: 60px !important;
+            height: 60px !important;
+        }
+    }
+}
 </style>
