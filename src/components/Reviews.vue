@@ -140,7 +140,7 @@ export default {
             display: flex;
             border-top: 1px solid rgba($color: #ABABAB, $alpha: .5);
             padding: 40px 0;
-            row-gap: 10px;
+            row-gap: 15px;
             column-gap: 30px;
 
             .review-main {
@@ -197,6 +197,7 @@ export default {
     .review__form {
         width: 100%;
         display: flex;
+        row-gap: 15px;
 
         &-rate {
             max-width: 160px;
@@ -330,6 +331,22 @@ export default {
 .review-modal-enter-from,
 .review-modal-leave-to {
     opacity: 0;
+}
+
+@media (max-width: 768px) {
+    .reviews__list-item {
+        flex-direction: column;
+    }
+
+    .review__form {
+        flex-direction: column;
+        align-items: center;
+
+        &-rate {
+            align-items: center;
+            text-align: center;
+        }
+    }
 }
 
 </style>
