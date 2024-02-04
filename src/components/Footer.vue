@@ -80,6 +80,8 @@ export default {
         width: 100%;
         display: flex;
         justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 30px;
     }
 
     &__list, &__contact-top {
@@ -117,6 +119,7 @@ export default {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        row-gap: 20px;
 
         .footer__socials {
             display: flex;
@@ -145,6 +148,14 @@ export default {
         text-align: center;
         color: var(--main-white);
         font-weight: 200;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer {
+        &-logo {
+            max-width: 110px;
+        }
     }
 }
 
