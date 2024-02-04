@@ -150,11 +150,9 @@ export default {
 
         this.cartStore.cartList = []
 
-        // this.$router.push('/')
-
-        // setTimeout(() => {
-        //   location.reload()
-        // }, 500);
+        setTimeout(() => {
+          this.$router.push('/')
+        }, 1500);
       }
     }
   },
@@ -167,6 +165,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .payment-widget {
   max-width: 420px;
   width: 100%;
@@ -198,7 +197,7 @@ export default {
     gap: 15px;
 
     &-item {
-      font-size: 50px;
+      font-size: calc(40px + 10 * (100vw / 1920));
       padding: 0px 10px;
       background: rgba($color: #d9d9d933, $alpha: 0.1);
       border-radius: 10px;
@@ -235,7 +234,7 @@ export default {
     gap: 8px;
 
     .wrap-inp {
-      max-width: 50% !important;
+      max-width: 50%;
     }
   }
 
@@ -287,5 +286,34 @@ export default {
       }
     }
   }
+}
+
+@media (min-width: 1920px) {
+  .card__types-item {
+    font-size: 50px !important;
+  }
+}
+
+@media (max-width: 1400px) {
+  .payment-widget {
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .payment-widget {
+    max-width: 450px;
+  } 
+}
+
+
+@media (max-width: 376px) {
+  .payment-wrapper {
+    flex-direction: column;
+
+    .wrap-inp {
+      max-width: 100% !important;
+    }
+  }   
 }
 </style>

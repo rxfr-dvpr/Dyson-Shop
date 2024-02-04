@@ -100,6 +100,10 @@ export default {
     .products__list {
         grid-template-columns: repeat(2, 1fr) !important;
     }
+
+    .tags__list {
+        gap: 15px !important;
+    }
 }
 
 @media (max-width: 992px) {

@@ -255,5 +255,21 @@ export default {
     }
 }
 
+@media (max-width: 1400px) {
+    .product-card {
+        &-img {
+            max-width: 400px !important;
+            min-height: auto;
+            max-height: auto;
+        }
+
+        row-gap: 30px;
+
+        .card-descr {
+            height: auto;
+        }
+    }
+}
+
 
 </style>

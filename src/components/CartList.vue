@@ -118,7 +118,8 @@ export default {
         width: 100%;
         display: flex;
         justify-content: space-between;
-        flex-wrap: wrap;
+        column-gap: 20px;
+        row-gap: 45px;
     }
 
     .cart__list {
@@ -133,7 +134,7 @@ export default {
             display: flex;
             justify-content: space-between;
             padding: 10px 20px 10px 10px;
-            gap: 15px;
+            gap: 20px;
             border-radius: 15px;
             box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.25);
 
@@ -149,7 +150,7 @@ export default {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                gap: 10px;
+                gap: 20px;
 
                 &-name {
                     max-width: 250px;
@@ -247,5 +248,45 @@ export default {
         }
     }
 }
+
+@media (max-width: 1024px) {
+    .cart-wrapper {
+        flex-direction: column;
+        align-items: center;
+
+        .cart__list {
+            max-width: 100%;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .cart__list {
+        &-item {
+            .item-descr {
+                justify-content: flex-start !important;
+                flex-wrap: wrap;
+
+                &-name {
+                    max-width: 100% !important;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .cart__list-item {
+        flex-direction: column;
+        align-items: center;
+
+        .item-descr {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+    }
+}
+
 
 </style>
