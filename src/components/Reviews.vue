@@ -30,7 +30,7 @@
 
                             <p class="review__modal-title frstUpper">{{ store.form.title }}</p>
 
-                            <span class="review__form-rate">
+                            <span class="review__form-rate modal">
                                 <span class="rate-nums"><span class="rating-num">{{ rateNum }}</span> / 5</span>
                                 
                                 <span class="rate-stars">
@@ -245,13 +245,13 @@ export default {
         justify-content: center;
         align-items: center;
         overflow-y: auto;
-        padding: 30px 0;
+        padding: 20px;
 
         &-form {
             max-width: 745px;
             width: 100%;
             overflow-y: auto;
-            padding: 15px 15px 70px 80px;
+            padding: 20px 25px 60px 80px;
             background: var(--main-white);
             display: flex;
             flex-direction: column;
@@ -305,9 +305,9 @@ export default {
         }
 
         &-title {
-            font-size: 30px;
+            font-size: calc(20px + 10 * (100vw / 1920));
             font-weight: 600;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
     }
 }
@@ -333,6 +333,25 @@ export default {
     opacity: 0;
 }
 
+@media (min-width: 1920px) {
+    .review__modal-title {
+        font-size: 30px !important;
+    }
+}
+
+@media (max-width: 992px) {
+    .review__modal-form {
+        padding-left: 25px !important;
+        align-items: center;
+        text-align: center;
+    }
+
+    .review__form-rate.modal {
+        align-items: center;        
+        margin: 0 auto;
+    }
+}
+
 @media (max-width: 768px) {
     .reviews__list-item {
         flex-direction: column;
@@ -347,6 +366,8 @@ export default {
             text-align: center;
         }
     }
+    
+    
 }
 
 </style>
